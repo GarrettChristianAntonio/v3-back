@@ -1,0 +1,44 @@
+# Configuración de VirtualHost para SIDIS v3
+#
+# INSTRUCCIONES:
+# 1. Abrir el archivo: C:\xampp\apache\conf\extra\httpd-vhost.conf
+# 2. Agregar el siguiente bloque al final del archivo:
+
+<VirtualHost *:80>
+    ServerName sidis.com
+    ServerAlias www.sidis.com
+    DocumentRoot "C:/Users/Christian/Desktop/sidis v3 back/public"
+
+    <Directory "C:/Users/Christian/Desktop/sidis v3 back/public">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog "logs/sidis-error.log"
+    CustomLog "logs/sidis-access.log" combined
+</VirtualHost>
+
+# VirtualHost para subdominios de tenants (wildcard)
+<VirtualHost *:80>
+    ServerName tenants.sidis.com
+    ServerAlias *.sidis.com
+    DocumentRoot "C:/Users/Christian/Desktop/sidis v3 back/public"
+
+    <Directory "C:/Users/Christian/Desktop/sidis v3 back/public">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog "logs/sidis-tenant-error.log"
+    CustomLog "logs/sidis-tenant-access.log" combined
+</VirtualHost>
+
+# 3. Verificar que en C:\xampp\apache\conf\httpd.conf esté descomentada (sin #) la línea:
+#    Include conf/extra/httpd-vhost.conf
+#
+# 4. Verificar que esté habilitado el módulo mod_rewrite (descomentar si es necesario):
+#    LoadModule rewrite_module modules/mod_rewrite.so
+#
+# 5. Reiniciar Apache desde el panel de control de XAMPP

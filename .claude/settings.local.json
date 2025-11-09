@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php test_tenant_creation.php:*)",
+      "Bash(php artisan migrate:*)",
+      "Bash(php artisan:*)",
+      "Bash(findstr:*)",
+      "Bash(nul)",
+      "Bash(dir /s /b /ad \"C:\\Users\\Christian\\Desktop\\sidis v3 back\\src\")",
+      "Bash(find:*)",
+      "Bash(php:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
